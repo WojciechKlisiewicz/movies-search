@@ -1,0 +1,16 @@
+.mat-form-field {
+    display: block;
+}
+
+.search {
+    display: flex;
+    align-items: baseline;
+    .years {
+        max-width: 120px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .movies {
+        flex-basis: 100%;
+    }
+}

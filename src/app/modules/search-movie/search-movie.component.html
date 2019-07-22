@@ -1,0 +1,21 @@
+<div class="search">
+    <mat-form-field class="movies">
+        <input placeholder="Search movie" type="text" [formControl]="searchMovie" matInput [matAutocomplete]="movies">
+        <mat-autocomplete (optionSelected)="onSearchMovieSelect($event)" autoActiveFirstOption #movies="matAutocomplete" [displayWith]="displayFunction">
+            <mat-option *ngFor="let item of autoComplete$ | async; let index = index" [value]="item">
+                {{item.title}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="years">
+        <input placeholder="Year of release" type="number" [formControl]="yearOfRelease" [min]="1901" [max]="currentYear" matInput [matAutocomplete]="years">
+        <mat-autocomplete autoActiveFirstOption #years="matAutocomplete">
+            <mat-option *ngFor="let item of availableYears; let index = index" [value]="item">
+                {{item}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <button mat-stroked-button [disabled]="!yearOfRelease.value && !searchMovie.value" (click)="clearForm()">Clear</button>
+</div>
